@@ -38,6 +38,18 @@ expert = """
 000190000
 """
 
+hidden = """
+380290154
+400050890
+195000000
+608000319
+000010008
+001000506
+800000005
+514080032
+269345781
+"""
+
 evil = """
 000600010
 007000000
@@ -51,7 +63,6 @@ evil = """
 """
 
 #ToDo:
-#  Hidden Pairs
 #  X-Wing
 #  XY-Wing
 
@@ -76,13 +87,7 @@ class Board(object):
 		present = set()
 		modified = False
 		
-		if direction == "hori":
-			squares = self.board[num]
-		elif direction == "vert":
-			squares = [row[num] for row in self.board]
-		elif direction == "box":
-			squares = [self.board[3 * (num // 3) + i // 3][3 * (num % 3) + i % 3]
-				for i in range(self.size)]
+		squares = self.segment(direction, num)
 		
 		for square in squares:
 			if len(square) == 1:
@@ -90,7 +95,7 @@ class Board(object):
 		
 		for square in squares:
 			if len(square) > 1:
-				if not modified and not present.isdisjoint(square):
+				if not modified and present & square:
 					modified = True
 				square -= present
 		
@@ -101,13 +106,7 @@ class Board(object):
 				num: int) -> bool:
 		modified = False
 		
-		if direction == "hori":
-			squares = self.board[num]
-		elif direction == "vert":
-			squares = [row[num] for row in self.board]
-		elif direction == "box":
-			squares = [self.board[3 * (num // 3) + i // 3][3 * (num % 3) + i % 3]
-				for i in range(self.size)]
+		squares = self.segment(direction, num)
 		
 		for d in range(1, self.size + 1):
 			count = 0
@@ -128,13 +127,7 @@ class Board(object):
 				num: int) -> bool:
 		modified = False
 		
-		if direction == "hori":
-			squares = self.board[num]
-		elif direction == "vert":
-			squares = [row[num] for row in self.board]
-		elif direction == "box":
-			squares = [self.board[3 * (num // 3) + i // 3][3 * (num % 3) + i % 3]
-				for i in range(self.size)]
+		squares = self.segment(direction, num)
 		
 		pairs: dict[frozenset[int], int] = {}
 		for square in squares:
@@ -147,7 +140,7 @@ class Board(object):
 				if value != 2 or square == set(key):
 					continue
 				
-				if not modified and not set(key).isdisjoint(square):
+				if not modified and set(key) & square:
 					modified = True
 				square -= set(key)
 		
@@ -159,36 +152,103 @@ class Board(object):
 				num: int) -> bool:
 		modified = False
 		
-		if direction == "hori":
-			iterable = self.board[num]
-		elif direction == "vert":
-			iterable = [row[num] for row in self.board]
-		elif direction == "box":
-			iterable = [self.board[3 * (num // 3) + i // 3][3 * (num % 3) + i % 3]
-				for i in range(self.size)]
+		squares = self.segment(direction, num)
 		
 		triples: dict[frozenset[int], int] = {}
-		for square in iterable:
+		for square in squares:
 			if len(square) == 3:
 				triples.setdefault(frozenset(square), 0)
 				triples[frozenset(square)] += 1
 
-		for square in iterable:
+		for square in squares:
 			if len(square) == 2:
 				for key in triples:
 					if square.issubset(key):
 						triples[key] += 1
 		
-		for square in iterable:
+		for square in squares:
 			for key, value in triples.items():
 				if value != 3 or square.issubset(key):
 					continue
 				
-				if not modified and not set(key).isdisjoint(square):
+				if not modified and set(key) & square:
 					modified = True
 				square -= set(key)
 		
 		return modified
+
+	def hidden_pair(self,
+				direction: Literal["hori", "vert", "box"],
+				num: int) -> bool:
+		modified = False
+		
+		squares = self.segment(direction, num)
+		
+		digits = {}
+		for d in range(1, self.size + 1):
+			for square in squares:
+				if d in square:
+					digits.setdefault(d, 0)
+					digits[d] += 1
+		
+		digits = {d: c for d, c in digits.items() if c == 2}
+		
+		for d, count in digits.items():
+			location = None
+			location2 = None
+			for square in squares:
+				if d in square:
+					if location is None:
+						location = square
+					else:
+						location2 = square
+						break
+			
+			intersect = {shared for shared in location & location2 if shared in digits}
+			if len(intersect) == 2:
+				for square in squares:
+					if square not in (location, location2):
+						if square & intersect:
+							modified = True
+							square -= intersect
+				
+				if not (len(location) == 2 and location == location2):
+					modified = True
+					location.clear()
+					location2.clear()
+					location |= intersect
+					location2 |= intersect
+		if modified:
+			print("Hidden Pair!!!")
+		return modified
+
+	def x_wing(self, direction: Literal["hori", "vert"]) -> bool:
+		modified = False
+		
+		for row in self.board:
+		
+			digits = {}
+			for d in range(1, self.size + 1):
+				for square in row:
+					if d in square:
+						digits.setdefault(d, 0)
+						digits[d] += 1
+			digits = {d: c for d, c in digits.items() if c == 2}
+			
+			
+
+	def segment(self,
+				direction: Literal["hori", "vert", "box"],
+				num: int) -> list[set[int]]:
+		if direction == "hori":
+			return self.board[num]
+		elif direction == "vert":
+			return [row[num] for row in self.board]
+		elif direction == "box":
+			return [self.board[3 * (num // 3) + i // 3][3 * (num % 3) + i % 3]
+				for i in range(self.size)]
+		else:
+			raise ValueError(f"direction must be 'hori', 'vert', or 'box', not {direction}")
 
 	def show(self) -> str:
 		s = "-" * 4 * self.size + "\n|"
@@ -218,6 +278,7 @@ class Board(object):
 			modified = self.basic_pass()
 			if not modified:
 				modified = modified or self.check_strategy(self.triple)
+				modified = modified or self.check_strategy(self.hidden_pair)
 
 	def basic_pass(self) -> bool:
 
@@ -254,11 +315,13 @@ class Board(object):
 		return s
 
 
-board = Board(hard[1:-1])
-
+board = Board(evil[1:-1])
 board.solve()
 print(board)
-print(board.to_string())
+rep = board.to_string()
+print(rep)
+if "0" in rep:
+	print("unsolved")
 
 	
 	
