@@ -1,6 +1,9 @@
 # sudoku.py
 
 from typing import Literal, Callable
+import logging as log
+
+#log.basicConfig(level=log.INFO)
 
 easy = """
 000005409
@@ -66,6 +69,9 @@ evil = """
 #  X-Wing
 #  XY-Wing
 
+def in_identity(x, container):
+	return any(x is obj for obj in container)
+
 
 class Board(object):
 	def __init__(self, string: str):
@@ -127,6 +133,8 @@ class Board(object):
 				num: int) -> bool:
 		modified = False
 		
+		log.info("checking for pair")
+		
 		squares = self.segment(direction, num)
 		
 		pairs: dict[frozenset[int], int] = {}
@@ -151,6 +159,8 @@ class Board(object):
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
+		
+		log.info("checking for triple")
 		
 		squares = self.segment(direction, num)
 		
@@ -181,6 +191,8 @@ class Board(object):
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
+		
+		log.info("checking for hidden pair")
 		
 		squares = self.segment(direction, num)
 		
@@ -225,17 +237,77 @@ class Board(object):
 	def x_wing(self, direction: Literal["hori", "vert"]) -> bool:
 		modified = False
 		
-		for row in self.board:
-		
+		def find_digits_with_n_places(squares: list[set[int]], n: int) -> dict[int, int]:
 			digits = {}
 			for d in range(1, self.size + 1):
-				for square in row:
+				for square in squares:
 					if d in square:
 						digits.setdefault(d, 0)
 						digits[d] += 1
-			digits = {d: c for d, c in digits.items() if c == 2}
+			digits = {d for d, c in digits.items() if c == n}
+			return digits
 			
+		before = self.show()
+		
+		log.info("checking for x-wings")
+		
+		for rownum1, row1 in enumerate(self.board):
+		
+			digits1 = find_digits_with_n_places(row1, 2)
 			
+			for rownum2, row2 in enumerate(self.board[rownum1:]):
+				if row2 is row1:
+					continue
+				
+				digits2 = find_digits_with_n_places(row2, 2)
+				
+				common = digits1 & digits2
+				if not common:
+					continue
+
+				log.debug(f"Examining rows: {rownum1} and {rownum2}")
+				log.debug(f"row {rownum1} is {row1}")
+				log.debug(f"row {rownum2} is {row2}")
+				log.debug(f"the common digit or digits are {common}")
+				
+				for index, (square1a, square1b) in enumerate(zip(row1, row2)):
+					if not (candidates := square1a & square1b & common):
+						#print(f"rejected: {(square1a, square1b) = }")
+						continue
+					#print(f"{candidates = }")
+					#print(f"{(square1a, square1b) = }")
+					for index2, (square2a, square2b) in enumerate(tuple(zip(row1, row2))[index:]):
+						index2 += index
+						if not (final_cand := candidates & square2a & square2b) or index == index2:
+							#print(f"rejected2: {(square2a, square2b) = }")
+							continue
+						
+						#print(f"{final_cand = }")
+						#print(f"{(square2a, square2b) = }")
+						
+						cover_columns = zip(
+							self.segment("vert", index),
+							self.segment("vert", index2)
+						)
+						
+						for non_base_cand1, non_base_cand2 in cover_columns:
+						
+							is_bases = in_identity(
+								non_base_cand1,
+								(square1a, square1b, square2a, square2b)
+							)
+							
+							if not is_bases and (non_base_cand1 & final_cand or non_base_cand2 & final_cand):
+								modified = True
+								
+								non_base_cand1 -= final_cand
+								non_base_cand2 -= final_cand
+						if modified:
+							log.info("x-wing!!!")
+							log.debug(f"bases: {(square1a, square1b, square2a, square2b)}")
+							return modified
+		return modified
+
 
 	def segment(self,
 				direction: Literal["hori", "vert", "box"],
@@ -277,6 +349,7 @@ class Board(object):
 		while modified:
 			modified = self.basic_pass()
 			if not modified:
+				modified = modified or self.x_wing("hori")
 				modified = modified or self.check_strategy(self.triple)
 				modified = modified or self.check_strategy(self.hidden_pair)
 
