@@ -3,7 +3,7 @@
 from typing import Literal, Callable
 import logging as log
 
-#log.basicConfig(level=log.INFO)
+log.basicConfig(level=log.INFO)
 
 easy = """
 000005409
@@ -153,8 +153,7 @@ class Board(object):
 				square -= set(key)
 		
 		return modified
-	
-	# notepad++ highlighting bug? triple is not a keyword
+
 	def triple(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
@@ -392,15 +391,19 @@ class Board(object):
 		return s
 
 
-board = Board(evil[1:-1])
-board.solve()
-print(board)
-rep = board.to_string()
-print(rep)
-if "0" in rep:
-	print("unsolved")
+
+def main():
+    board = Board(evil[1:-1])
+    board.solve()
+    print(board)
+    rep = board.to_string()
+    print(rep)
+    if "0" in rep:
+        print("unsolved")
+
+
+if __name__ == "__main__":
+    main()
+
 
 	
-	
-	
-
