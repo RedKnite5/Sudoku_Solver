@@ -246,8 +246,6 @@ class Board(object):
 						digits[d] += 1
 			digits = {d for d, c in digits.items() if c == n}
 			return digits
-			
-		before = self.show()
 		
 		log.info("checking for x-wings")
 		
