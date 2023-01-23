@@ -393,17 +393,17 @@ class Board(object):
 
 
 def main():
-    board = Board(evil[1:-1])
-    board.solve()
-    print(board)
-    rep = board.to_string()
-    print(rep)
-    if "0" in rep:
-        print("unsolved")
+	board = Board(evil[1:-1])
+	board.solve()
+	print(board)
+	rep = board.to_string()
+	print(rep)
+	if "0" in rep:
+		print("unsolved")
 
 
 if __name__ == "__main__":
-    main()
+	main()
 
 
 	
