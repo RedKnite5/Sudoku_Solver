@@ -66,7 +66,7 @@ evil = """
 """
 
 #ToDo:
-#  X-Wing
+#  X-Wing vert and more general fish
 #  XY-Wing
 
 def in_identity(x, container):
@@ -305,7 +305,6 @@ class Board(object):
 							log.debug(f"bases: {(square1a, square1b, square2a, square2b)}")
 							return modified
 		return modified
-
 
 	def segment(self,
 				direction: Literal["hori", "vert", "box"],
