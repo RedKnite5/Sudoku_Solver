@@ -209,27 +209,34 @@ class Board(object):
 			location = None
 			location2 = None
 			for square in squares:
-				if d in square:
-					if location is None:
-						location = square
-					else:
-						location2 = square
-						break
+				if d not in square:
+					continue
+
+				if location is None:
+					location = square
+				else:
+					location2 = square
+					break
 			
 			intersect = {shared for shared in location & location2 if shared in digits}
-			if len(intersect) == 2:
-				for square in squares:
-					if square not in (location, location2):
-						if square & intersect:
-							modified = True
-							square -= intersect
+			if len(intersect) != 2:
+				continue
+			
+			for square in squares:
+				if square not in (location, location2):
+					if square & intersect:
+						modified = True
+						square -= intersect
+			
+			if len(location) == 2 and location == location2:
+				continue
 				
-				if not (len(location) == 2 and location == location2):
-					modified = True
-					location.clear()
-					location2.clear()
-					location |= intersect
-					location2 |= intersect
+			modified = True
+			location.clear()
+			location2.clear()
+			location |= intersect
+			location2 |= intersect
+
 		if modified:
 			print("Hidden Pair!!!")
 		return modified
