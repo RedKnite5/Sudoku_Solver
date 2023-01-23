@@ -66,8 +66,28 @@ evil = """
 """
 
 #ToDo:
-#  X-Wing vert and more general fish
+#  more general fish
 #  XY-Wing
+
+'''
+class 2D_List_Of_Sets(object):
+	def __init__(l):
+		self.data: list[list[set[int]]] = l
+	
+	def __getattr__(self, attr):
+		return getattr(self.data, attr)
+	
+	def __getitem__(self, item):
+		if isinstance(item, int | slice):
+			return self.data[item]
+		
+		match item:
+			case (x, y):
+				return self.data[x][y]
+		
+		raise ValueError
+'''
+
 
 def in_identity(x, container):
 	return any(x is obj for obj in container)
@@ -255,32 +275,35 @@ class Board(object):
 		
 		log.info("checking for x-wings")
 		
-		for rownum1, row1 in enumerate(self.board):
+		segments1 = self.board if direction == "hori" else (self.board[:][i] for i in range(9))
+		for segnum1, seg1 in enumerate(segments1):
 		
-			digits1 = find_digits_with_n_places(row1, 2)
+			digits1 = find_digits_with_n_places(seg1, 2)
 			
-			for rownum2, row2 in enumerate(self.board[rownum1:]):
-				if row2 is row1:
+			segments2 = self.board[segnum1:] if direction == "hori" else (self.board[:][i] for i in range(segnum1, 9))  # ?
+			for segnum2, seg2 in enumerate(segments2):
+				if seg2 is seg1:
 					continue
 				
-				digits2 = find_digits_with_n_places(row2, 2)
+				digits2 = find_digits_with_n_places(seg2, 2)
 				
 				common = digits1 & digits2
 				if not common:
 					continue
 
-				log.debug(f"Examining rows: {rownum1} and {rownum2}")
-				log.debug(f"row {rownum1} is {row1}")
-				log.debug(f"row {rownum2} is {row2}")
+				segtype = "row" if direction == "hori" else "col"
+				log.debug(f"Examining {segtype}: {segnum1} and {segnum2}")
+				log.debug(f"{segtype} {segnum1} is {seg1}")
+				log.debug(f"{segtype} {segnum2} is {seg2}")
 				log.debug(f"the common digit or digits are {common}")
 				
-				for index, (square1a, square1b) in enumerate(zip(row1, row2)):
+				for index, (square1a, square1b) in enumerate(zip(seg1, seg2)):
 					if not (candidates := square1a & square1b & common):
 						#print(f"rejected: {(square1a, square1b) = }")
 						continue
 					#print(f"{candidates = }")
 					#print(f"{(square1a, square1b) = }")
-					for index2, (square2a, square2b) in enumerate(tuple(zip(row1, row2))[index:]):
+					for index2, (square2a, square2b) in enumerate(tuple(zip(seg1, seg2))[index:]):
 						index2 += index
 						if not (final_cand := candidates & square2a & square2b) or index == index2:
 							#print(f"rejected2: {(square2a, square2b) = }")
@@ -289,12 +312,13 @@ class Board(object):
 						#print(f"{final_cand = }")
 						#print(f"{(square2a, square2b) = }")
 						
-						cover_columns = zip(
-							self.segment("vert", index),
-							self.segment("vert", index2)
+						oppisite = "vert" if direction == "hori" else "hori"
+						cover_segments = zip(
+							self.segment(oppisite, index),
+							self.segment(oppisite, index2)
 						)
 						
-						for non_base_cand1, non_base_cand2 in cover_columns:
+						for non_base_cand1, non_base_cand2 in cover_segments:
 						
 							is_bases = in_identity(
 								non_base_cand1,
@@ -307,7 +331,7 @@ class Board(object):
 								non_base_cand1 -= final_cand
 								non_base_cand2 -= final_cand
 						if modified:
-							log.info("x-wing!!!")
+							log.info(f"{direction} x-wing!!!")
 							log.debug(f"bases: {(square1a, square1b, square2a, square2b)}")
 							return modified
 		return modified
@@ -352,6 +376,7 @@ class Board(object):
 		while modified:
 			modified = self.basic_pass()
 			if not modified:
+				modified = modified or self.x_wing("vert")
 				modified = modified or self.x_wing("hori")
 				modified = modified or self.check_strategy(self.triple)
 				modified = modified or self.check_strategy(self.hidden_pair)
