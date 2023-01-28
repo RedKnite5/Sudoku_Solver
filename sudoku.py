@@ -1,139 +1,81 @@
 # sudoku.py
 
+from dataclasses import dataclass, field
+from functools import reduce
+from operator import and_, or_
+from itertools import chain
+
 from typing import Literal, Callable
 import logging as log
 
-log.basicConfig(level=log.INFO)
+from boards import *
 
-easy = """
-000005409
-451002300
-982000561
-607000980
-003460000
-500287010
-040070096
-300000700
-005946802
-"""
+#log.basicConfig(level=log.DEBUG)
 
-hard = """
-530002000
-009030200
-027000010
-700000000
-018090005
-090100002
-000410070
-085700029
-004900500
-"""
 
-expert = """
-479005000
-000030008
-000000060
-340000001
-006050009
-800000006
-000000427
-007000000
-000190000
-"""
-
-hidden = """
-380290154
-400050890
-195000000
-608000319
-000010008
-001000506
-800000005
-514080032
-269345781
-"""
-
-evil = """
-000600010
-007000000
-820009300
-004000500
-003007000
-570900006
-000080003
-950002800
-400000000
-"""
 
 #ToDo:
 #  more general fish
 #  XY-Wing
 
-'''
-class 2D_List_Of_Sets(object):
-	def __init__(l):
-		self.data: list[list[set[int]]] = l
-	
-	def __getattr__(self, attr):
-		return getattr(self.data, attr)
-	
-	def __getitem__(self, item):
-		if isinstance(item, int | slice):
-			return self.data[item]
-		
-		match item:
-			case (x, y):
-				return self.data[x][y]
-		
-		raise ValueError
-'''
 
+@dataclass
+class FishParts:
+	segments: list[tuple[set[int]]] = field(default_factory=list)
+	segnums: list[int] = field(default_factory=list)
+	digits: list[set[int]] = field(default_factory=list)
 
 def in_identity(x, container):
+	#print(f"{x = }")
+	#for obj in container:
+	#	print(obj)
+	#	if x is obj:
+	#		return True
+	#return False
 	return any(x is obj for obj in container)
 
 
 class Board(object):
 	def __init__(self, string: str):
-		
+
 		data = string.split("\n")
-		
+
 		self.size = len(data)
 		digits = {i for i in range(1, self.size + 1)}
-		
-		self.board = [
-			[{int(data[j][i])} if int(data[j][i]) else digits.copy()
+
+		self.board = tuple(
+			tuple({int(data[j][i])} if int(data[j][i]) else digits.copy()
 			for i
-			in range(self.size)] for j in range(self.size)
-		]
+			in range(self.size)) for j in range(self.size)
+		)
 
 	def sudoku(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		present = set()
 		modified = False
-		
+
 		squares = self.segment(direction, num)
-		
+
 		for square in squares:
 			if len(square) == 1:
 				present.add(next(iter(square)))
-		
+
 		for square in squares:
 			if len(square) > 1:
 				if not modified and present & square:
 					modified = True
 				square -= present
-		
+
 		return modified
-	
+
 	def naked_single(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
-		
+
 		squares = self.segment(direction, num)
-		
+
 		for d in range(1, self.size + 1):
 			count = 0
 			location = set()
@@ -145,44 +87,44 @@ class Board(object):
 				location.clear()
 				location.add(d)
 				modified = True
-		
+
 		return modified
 
 	def pair(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
-		
+
 		log.info("checking for pair")
-		
+
 		squares = self.segment(direction, num)
-		
+
 		pairs: dict[frozenset[int], int] = {}
 		for square in squares:
 			if len(square) == 2:
 				pairs.setdefault(frozenset(square), 0)
 				pairs[frozenset(square)] += 1
-		
+
 		for square in squares:
 			for key, value in pairs.items():
 				if value != 2 or square == set(key):
 					continue
-				
+
 				if not modified and set(key) & square:
 					modified = True
 				square -= set(key)
-		
+
 		return modified
 
 	def triple(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
-		
+
 		log.info("checking for triple")
-		
+
 		squares = self.segment(direction, num)
-		
+
 		triples: dict[frozenset[int], int] = {}
 		for square in squares:
 			if len(square) == 3:
@@ -194,36 +136,36 @@ class Board(object):
 				for key in triples:
 					if square.issubset(key):
 						triples[key] += 1
-		
+
 		for square in squares:
 			for key, value in triples.items():
 				if value != 3 or square.issubset(key):
 					continue
-				
+
 				if not modified and set(key) & square:
 					modified = True
 				square -= set(key)
-		
+
 		return modified
 
 	def hidden_pair(self,
 				direction: Literal["hori", "vert", "box"],
 				num: int) -> bool:
 		modified = False
-		
+
 		log.info("checking for hidden pair")
-		
+
 		squares = self.segment(direction, num)
-		
+
 		digits = {}
 		for d in range(1, self.size + 1):
 			for square in squares:
 				if d in square:
 					digits.setdefault(d, 0)
 					digits[d] += 1
-		
+
 		digits = {d: c for d, c in digits.items() if c == 2}
-		
+
 		for d, count in digits.items():
 			location = None
 			location2 = None
@@ -236,20 +178,20 @@ class Board(object):
 				else:
 					location2 = square
 					break
-			
+
 			intersect = {shared for shared in location & location2 if shared in digits}
 			if len(intersect) != 2:
 				continue
-			
+
 			for square in squares:
 				if square not in (location, location2):
 					if square & intersect:
 						modified = True
 						square -= intersect
-			
+
 			if len(location) == 2 and location == location2:
 				continue
-				
+
 			modified = True
 			location.clear()
 			location2.clear()
@@ -260,81 +202,215 @@ class Board(object):
 			print("Hidden Pair!!!")
 		return modified
 
-	def x_wing(self, direction: Literal["hori", "vert"]) -> bool:
-		modified = False
-		
-		def find_digits_with_n_places(squares: list[set[int]], n: int) -> dict[int, int]:
-			digits = {}
-			for d in range(1, self.size + 1):
-				for square in squares:
-					if d in square:
-						digits.setdefault(d, 0)
-						digits[d] += 1
-			digits = {d for d, c in digits.items() if c == n}
-			return digits
-		
-		log.info("checking for x-wings")
-		
-		segments1 = self.board if direction == "hori" else (self.board[:][i] for i in range(9))
-		for segnum1, seg1 in enumerate(segments1):
-		
-			digits1 = find_digits_with_n_places(seg1, 2)
-			
-			segments2 = self.board[segnum1:] if direction == "hori" else (self.board[:][i] for i in range(segnum1, 9))  # ?
-			for segnum2, seg2 in enumerate(segments2):
-				if seg2 is seg1:
-					continue
-				
-				digits2 = find_digits_with_n_places(seg2, 2)
-				
-				common = digits1 & digits2
-				if not common:
-					continue
+	def x_wing(self):
+		print("hori")
+		hori = self._fish("hori", 2)
+		print("vert")
+		vert = self._fish("vert", 2)
+		return hori or vert
 
-				segtype = "row" if direction == "hori" else "col"
-				log.debug(f"Examining {segtype}: {segnum1} and {segnum2}")
-				log.debug(f"{segtype} {segnum1} is {seg1}")
-				log.debug(f"{segtype} {segnum2} is {seg2}")
-				log.debug(f"the common digit or digits are {common}")
-				
-				for index, (square1a, square1b) in enumerate(zip(seg1, seg2)):
-					if not (candidates := square1a & square1b & common):
-						#print(f"rejected: {(square1a, square1b) = }")
-						continue
-					#print(f"{candidates = }")
-					#print(f"{(square1a, square1b) = }")
-					for index2, (square2a, square2b) in enumerate(tuple(zip(seg1, seg2))[index:]):
-						index2 += index
-						if not (final_cand := candidates & square2a & square2b) or index == index2:
-							#print(f"rejected2: {(square2a, square2b) = }")
-							continue
-						
-						#print(f"{final_cand = }")
-						#print(f"{(square2a, square2b) = }")
-						
-						oppisite = "vert" if direction == "hori" else "hori"
-						cover_segments = zip(
-							self.segment(oppisite, index),
-							self.segment(oppisite, index2)
-						)
-						
-						for non_base_cand1, non_base_cand2 in cover_segments:
-						
-							is_bases = in_identity(
-								non_base_cand1,
-								(square1a, square1b, square2a, square2b)
-							)
-							
-							if not is_bases and (non_base_cand1 & final_cand or non_base_cand2 & final_cand):
-								modified = True
-								
-								non_base_cand1 -= final_cand
-								non_base_cand2 -= final_cand
-						if modified:
-							log.info(f"{direction} x-wing!!!")
-							log.debug(f"bases: {(square1a, square1b, square2a, square2b)}")
-							return modified
+	def swordfish(self):
+		print("hori")
+		hori = self._fish("hori", 3)
+		print("vert")
+		vert = self._fish("vert", 3)
+		return hori or vert
+
+	def _fish(
+		self,
+		direction: Literal["hori", "vert"],
+		size: int,
+		iteration = 0,
+		data = None
+		) -> bool:
+		"""Check for fish. Size indicates how large the fish is."""
+		log.info(f"Checking for size {size} fish")
+		log.debug(str(self))
+
+		if data is None:
+			data = FishParts()
+
+		board = self.board if direction == "hori" else tuple(zip(*self.board))
+		start = data.segnums[iteration-1] if len(data.segnums) > 0 else -1
+		print(f"{start = }, {iteration = }, {data.segnums = }")
+		for segnum, seg in enumerate(board[start+1:]):
+
+			digits = self.digits_with_n_or_less_places(seg, size)
+			segnum += start + 1
+
+			if segnum in data.segnums:
+				assert False  # should not happen
+				continue
+
+			# check if common numbers in all the rows/columns
+			if not (candidates := reduce(and_, data.digits, digits)):
+				continue
+
+			print(f"_fish {data.digits = }")
+			print(f"_fish {digits = }")
+
+			data.segments.append(seg)
+			data.segnums.append(segnum)
+			data.digits.append(candidates)
+
+			if iteration == size-1:
+				modified = self.fish_segments(direction, size, data)
+				if modified:
+					print("return segments success!")
+			else:
+				modified = self._fish(direction, size, iteration+1, data)
+
+			if modified:
+				return True
+
+			data.segments.pop()
+			data.segnums.pop()
+			data.digits.pop()
+
+		return False
+
+		'''
+			segments2 = self.board if direction == "hori" else list(zip(*self.board))
+			for segnum2, seg2 in enumerate(segments2[segnum1:]):
+				segnum2 += segnum1
+				modified = self.x_wing_segments(
+					seg1, segnum1, seg2, segnum2, digits1, direction
+				)
+				if modified:
+					return True
+		return False
+		'''
+
+	def digits_with_n_or_less_places(
+		self, squares: tuple[set[int]], n: int
+	) -> set[int]:
+		digit_counts = {}
+		for d in range(1, self.size + 1):
+			for square in squares:
+				if d in square:
+					digit_counts.setdefault(d, 0)
+					digit_counts[d] += 1
+		digits = {d for d, c in digit_counts.items() if c <= n and c > 1}
+		return digits
+
+	def fish_segments(
+		self,
+		direction: Literal["hori", "vert"],
+		size: int,
+		data: FishParts,
+		iteration: int = 0,
+		cross_data: FishParts=None) -> bool:
+
+		if cross_data is None:
+			cross_data = FishParts()
+
+		# oppasite direction as in _fish
+
+		#segtype = "row" if direction == "hori" else "col"
+		#log.debug(f"Examining {segtype}: {segnum1} and {segnum2}")
+		#log.debug(f"{segtype} {segnum1} is {seg1}")
+		#log.debug(f"{segtype} {segnum2} is {seg2}")
+		#log.debug(f"the common digit or digits are {common}")
+
+		start = cross_data.segnums[iteration-1] if len(cross_data.segnums) > 0 else -1
+		for index, squares in enumerate(tuple(zip(*data.segments))[start+1:]):
+			if not (candidates := reduce(and_, chain(squares, data.digits, cross_data.digits))):
+				continue
+
+			index += start + 1
+			print(f"{data.digits = }")
+			print(f"{cross_data.digits = }")
+			print(f"{squares = }")
+			print(f"{index = }")
+			print(f"{data.segnums = }")
+			print(f"{candidates = }")
+
+			cross_data.segments.append(squares)
+			cross_data.segnums.append(index)
+			cross_data.digits.append(candidates)
+
+			if iteration == size-1:
+				modified = self.remove_fishy_dupes(direction, cross_data)
+			else:
+				modified = self.fish_segments(direction, size, data, iteration+1, cross_data)
+
+			if modified:
+				return True
+
+			s = cross_data.segments.pop()
+			cross_data.segnums.pop()
+			cross_data.digits.pop()
+
+			print(f"popped: {s}")
+		return False
+
+		'''
+		for index, squares1 in enumerate(zip(*data.segments)):
+			if not (candidates := reduce(and_, chain(squares1, data.digits))):
+				#log.debug(f"rejected: {(square1a, square1b) = }")
+				continue
+			#log.debug(f"{candidates = }")
+			#log.debug(f"{squares1 = }")
+
+			for index2, (square2a, square2b) in enumerate(tuple(zip(seg1, seg2))[index:]):
+				index2 += index
+				if not (final_cand := candidates & square2a & square2b) or index == index2:
+					log.debug(f"rejected2: {(square2a, square2b) = }")
+					continue
+		'''
+
+	def remove_fishy_dupes(self, direction, cross_data):
+		print("remove_fishy_dupes")
+
+		oppisite = "vert" if direction == "hori" else "hori"
+		cover_segments = zip(
+			*map(lambda index: self.segment(oppisite, index), cross_data.segnums)
+		)
+
+		modified = False
+		for non_base_cands in cover_segments:
+
+			# not working
+			is_bases = any(in_identity(cand, chain(*cross_data.segments)) for cand in non_base_cands)
+			#print("is bases: ", is_bases)
+			print(f"{non_base_cands[0] = } continer[0] = {tuple(chain(*cross_data.segments))[0]}")
+			print(f"Basis: {tuple(chain(*cross_data.segments))}")
+			print(f"{is_bases = }")
+			print(f"candidates: {cross_data.digits[-1]}")
+
+			if self.non_trival_overlap(
+				cross_data.digits[-1],
+				non_base_cands,
+				is_bases
+			):
+				modified = True
+				print(f"{non_base_cands = }")
+				print(f"{direction = }")
+
+				print(f"removing {cross_data.digits[-1]}")
+				for not_base in non_base_cands:
+					not_base -= cross_data.digits[-1]
+		#if modified:
+			#log.debug(str(self))
+			#log.info(f"{direction} x-wing!!!")
+
+			#log.info(f"bases: {(square1a, square1b, square2a, square2b)}")
+			#log.info(f"rows or cols: {segnum1, segnum2}")
 		return modified
+
+
+	def non_trival_overlap(
+		self, final_cand, non_base_cands, is_bases):
+		"""Check if squares contain the digit that is to be ruled out and that
+		these are not the squares that form the x-wing"""
+
+		#overlap: bool = not is_bases
+		#for cand in non_base_cands:
+		#	overlap = overlap or final_cand & cand
+		#return overlap
+
+		return any(map(lambda cand: final_cand & cand, non_base_cands)) and not is_bases
+
 
 	def segment(self,
 				direction: Literal["hori", "vert", "box"],
@@ -351,7 +427,7 @@ class Board(object):
 
 	def show(self) -> str:
 		s = "-" * 4 * self.size + "\n|"
-		
+
 		for row in self.board:
 			for i in range(3):
 				for square in row:
@@ -364,7 +440,7 @@ class Board(object):
 					s += "|"
 				s += "\n|"
 			s += "-" * 4 * self.size + "\n|"
-		
+
 		return s[:-1]
 
 	def __str__(self) -> str:
@@ -376,19 +452,21 @@ class Board(object):
 		while modified:
 			modified = self.basic_pass()
 			if not modified:
-				modified = modified or self.x_wing("vert")
-				modified = modified or self.x_wing("hori")
+				modified = modified or self.x_wing()
+				return
+				#modified = modified or self.x_wing("hori")
+
 				modified = modified or self.check_strategy(self.triple)
 				modified = modified or self.check_strategy(self.hidden_pair)
 
 	def basic_pass(self) -> bool:
 
 		mod = False
-		
+
 		mod = mod or self.check_strategy(self.sudoku)
 		mod = mod or self.check_strategy(self.naked_single)
 		mod = mod or self.check_strategy(self.pair)
-		
+
 		return mod
 
 	def check_strategy(self,
@@ -402,7 +480,7 @@ class Board(object):
 			mod = mod or strategy("vert", i)
 			mod = mod or strategy("box", i)
 		return mod
-	
+
 	def to_string(self) -> str:
 
 		s = ""
@@ -410,6 +488,8 @@ class Board(object):
 			for square in row:
 				if len(square) == 1:
 					s += str(next(iter(square)))
+				elif len(square) == 0:
+					s += "X"
 				else:
 					s += "0"
 			s += "\n"
@@ -418,17 +498,20 @@ class Board(object):
 
 
 def main():
-	board = Board(evil[1:-1])
+	board = Board(expert)
 	board.solve()
 	print(board)
 	rep = board.to_string()
 	print(rep)
-	if "0" in rep:
+	if "X" in rep:
+		print("ERROR")
+	elif "0" in rep:
 		print("unsolved")
+
 
 
 if __name__ == "__main__":
 	main()
 
 
-	
+
