@@ -16,6 +16,7 @@ class TestFullPuzzles(unittest.TestCase):
 			"hard": (hard, hard_solved),
 			"expert": (expert, expert_solved),
 			"hidden": (hidden, hidden_solved)
+			"x_wing": (x_wing, x_wing_solved)
 		}
 		
 		for key, (puzzle, solution) in pairs.items():
