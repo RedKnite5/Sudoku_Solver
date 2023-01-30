@@ -10,7 +10,7 @@ import logging as log
 
 from boards import *
 
-#log.basicConfig(level=log.DEBUG)
+log.basicConfig(level=log.DEBUG)
 
 
 
@@ -26,12 +26,6 @@ class FishParts:
 	digits: list[set[int]] = field(default_factory=list)
 
 def in_identity(x, container):
-	#print(f"{x = }")
-	#for obj in container:
-	#	print(obj)
-	#	if x is obj:
-	#		return True
-	#return False
 	return any(x is obj for obj in container)
 
 
@@ -199,20 +193,20 @@ class Board(object):
 			location2 |= intersect
 
 		if modified:
-			print("Hidden Pair!!!")
+			log.info("Hidden Pair!!!")
 		return modified
 
 	def x_wing(self):
-		print("hori")
+		log.info("hori")
 		hori = self._fish("hori", 2)
-		print("vert")
+		log.info("vert")
 		vert = self._fish("vert", 2)
 		return hori or vert
 
 	def swordfish(self):
-		print("hori")
+		log.info("hori")
 		hori = self._fish("hori", 3)
-		print("vert")
+		log.info("vert")
 		vert = self._fish("vert", 3)
 		return hori or vert
 
@@ -232,7 +226,7 @@ class Board(object):
 
 		board = self.board if direction == "hori" else tuple(zip(*self.board))
 		start = data.segnums[iteration-1] if len(data.segnums) > 0 else -1
-		print(f"{start = }, {iteration = }, {data.segnums = }")
+		log.debug(f"{start = }, {iteration = }, {data.segnums = }")
 		for segnum, seg in enumerate(board[start+1:]):
 
 			digits = self.digits_with_n_or_less_places(seg, size)
@@ -246,8 +240,11 @@ class Board(object):
 			if not (candidates := reduce(and_, data.digits, digits)):
 				continue
 
-			print(f"_fish {data.digits = }")
-			print(f"_fish {digits = }")
+			log.debug(f"_fish {data.digits = }")
+			log.debug(f"_fish {digits = }")
+			log.debug(f"_fish {segnum = }")
+			log.debug(f"_fish {seg = }")
+			log.debug(f"_fish {candidates = }")
 
 			data.segments.append(seg)
 			data.segnums.append(segnum)
@@ -256,7 +253,7 @@ class Board(object):
 			if iteration == size-1:
 				modified = self.fish_segments(direction, size, data)
 				if modified:
-					print("return segments success!")
+					log.info("return segments success!")
 			else:
 				modified = self._fish(direction, size, iteration+1, data)
 
@@ -268,18 +265,6 @@ class Board(object):
 			data.digits.pop()
 
 		return False
-
-		'''
-			segments2 = self.board if direction == "hori" else list(zip(*self.board))
-			for segnum2, seg2 in enumerate(segments2[segnum1:]):
-				segnum2 += segnum1
-				modified = self.x_wing_segments(
-					seg1, segnum1, seg2, segnum2, digits1, direction
-				)
-				if modified:
-					return True
-		return False
-		'''
 
 	def digits_with_n_or_less_places(
 		self, squares: tuple[set[int]], n: int
@@ -304,6 +289,8 @@ class Board(object):
 		if cross_data is None:
 			cross_data = FishParts()
 
+		log.info("Fish segments")
+
 		# oppasite direction as in _fish
 
 		#segtype = "row" if direction == "hori" else "col"
@@ -314,16 +301,21 @@ class Board(object):
 
 		start = cross_data.segnums[iteration-1] if len(cross_data.segnums) > 0 else -1
 		for index, squares in enumerate(tuple(zip(*data.segments))[start+1:]):
-			if not (candidates := reduce(and_, chain(squares, data.digits, cross_data.digits))):
+			# need to use digits_with_n_or_less_places or something like it on cross_data.digits
+			digits = self.digits_with_n_or_less_places(squares, size)
+
+			if not (candidates := reduce(and_, chain(cross_data.digits, data.digits), digits)):
+				log.debug(f"fish segments: {candidates = }")
+				log.debug(f"fish segments: {data.digits, cross_data.digits, digits}")
 				continue
 
 			index += start + 1
-			print(f"{data.digits = }")
-			print(f"{cross_data.digits = }")
-			print(f"{squares = }")
-			print(f"{index = }")
-			print(f"{data.segnums = }")
-			print(f"{candidates = }")
+			log.debug(f"{data.digits = }")
+			log.debug(f"{cross_data.digits = }")
+			log.debug(f"{squares = }")
+			log.debug(f"{index = }")
+			log.debug(f"{data.segnums = }")
+			log.debug(f"{candidates = }")
 
 			cross_data.segments.append(squares)
 			cross_data.segnums.append(index)
@@ -341,26 +333,11 @@ class Board(object):
 			cross_data.segnums.pop()
 			cross_data.digits.pop()
 
-			print(f"popped: {s}")
+			log.debug(f"popped: {s}")
 		return False
 
-		'''
-		for index, squares1 in enumerate(zip(*data.segments)):
-			if not (candidates := reduce(and_, chain(squares1, data.digits))):
-				#log.debug(f"rejected: {(square1a, square1b) = }")
-				continue
-			#log.debug(f"{candidates = }")
-			#log.debug(f"{squares1 = }")
-
-			for index2, (square2a, square2b) in enumerate(tuple(zip(seg1, seg2))[index:]):
-				index2 += index
-				if not (final_cand := candidates & square2a & square2b) or index == index2:
-					log.debug(f"rejected2: {(square2a, square2b) = }")
-					continue
-		'''
-
 	def remove_fishy_dupes(self, direction, cross_data):
-		print("remove_fishy_dupes")
+		log.info("remove_fishy_dupes")
 
 		oppisite = "vert" if direction == "hori" else "hori"
 		cover_segments = zip(
@@ -372,11 +349,11 @@ class Board(object):
 
 			# not working
 			is_bases = any(in_identity(cand, chain(*cross_data.segments)) for cand in non_base_cands)
-			#print("is bases: ", is_bases)
-			print(f"{non_base_cands[0] = } continer[0] = {tuple(chain(*cross_data.segments))[0]}")
-			print(f"Basis: {tuple(chain(*cross_data.segments))}")
-			print(f"{is_bases = }")
-			print(f"candidates: {cross_data.digits[-1]}")
+			log.debug("is bases: ", is_bases)
+			log.debug(f"{non_base_cands[0] = } continer[0] = {tuple(chain(*cross_data.segments))[0]}")
+			log.debug(f"Basis: {tuple(chain(*cross_data.segments))}")
+			log.debug(f"{is_bases = }")
+			log.debug(f"candidates: {cross_data.digits[-1]}")
 
 			if self.non_trival_overlap(
 				cross_data.digits[-1],
@@ -384,10 +361,10 @@ class Board(object):
 				is_bases
 			):
 				modified = True
-				print(f"{non_base_cands = }")
-				print(f"{direction = }")
+				log.debug(f"{non_base_cands = }")
+				log.debug(f"{direction = }")
 
-				print(f"removing {cross_data.digits[-1]}")
+				log.debug(f"removing {cross_data.digits[-1]}")
 				for not_base in non_base_cands:
 					not_base -= cross_data.digits[-1]
 		#if modified:
@@ -453,8 +430,7 @@ class Board(object):
 			modified = self.basic_pass()
 			if not modified:
 				modified = modified or self.x_wing()
-				return
-				#modified = modified or self.x_wing("hori")
+				modified = modified or self.swordfish()
 
 				modified = modified or self.check_strategy(self.triple)
 				modified = modified or self.check_strategy(self.hidden_pair)
