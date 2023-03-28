@@ -1,392 +1,638 @@
-start = 4, iteration = 2, data.segnums = [2, 4]
-_fish data.digits = [{2, 4}, {2, 4}]
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({3}, {7}, {5}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 2}, {8}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {9}, {4}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 4}, {9}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {2, 3}, {2, 3}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {5}, {6}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({1}, {4, 8}, {7}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {3, 8}, {1}), [{2, 4}, {2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {6}, {2, 3}), [{2, 4}, {2, 4}, {2}], [])
-_fish data.digits = [{2, 4}, {2, 4}]
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({3}, {7}, {9}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 2}, {4, 6}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {9}, {7}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 4}, {6, 8}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {2, 3}, {1}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {5}, {3}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1}, {4, 8}, {4, 8}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {3, 8}, {2}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {6}, {5}), [{2, 4}, {2, 4}, {4}], [])
-_fish data.digits = [{2, 4}, {2, 4}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({3}, {7}, {4, 6}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 2}, {5}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {9}, {1}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {1, 4}, {6, 8}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {2, 3}, {7}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {5}, {2}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1}, {4, 8}, {9}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {3, 8}, {3, 8}), [{2, 4}, {2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {6}, {3, 4}), [{2, 4}, {2, 4}, {4}], [])
-_fish data.digits = [{2, 4}]
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2}
-start = 5, iteration = 2, data.segnums = [2, 5]
-_fish data.digits = [{2, 4}]
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {4}
-start = 7, iteration = 2, data.segnums = [2, 7]
-_fish data.digits = [{2, 4}, {4}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({3}, {9}, {4, 6}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {4, 6}, {5}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {7}, {1}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {6, 8}, {6, 8}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {1}, {7}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {3}, {2}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1}, {4, 8}, {9}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {2}, {3, 8}), [{2, 4}, {4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {5}, {3, 4}), [{2, 4}, {4}, {4}], [])
-_fish data.digits = [{2, 4}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4}
-start = 8, iteration = 2, data.segnums = [2, 8]
-_fish data.digits = []
-_fish digits = {1, 2, 4, 6}
-_fish segnum = 3
-_fish seg = ({2, 6}, {1, 2, 6}, {3}, {7}, {8}, {1, 4}, {5}, {9}, {2, 4})
-_fish candidates = {1, 2, 4, 6}
-start = 3, iteration = 1, data.segnums = [3]
-_fish data.digits = [{1, 2, 4, 6}]
-_fish digits = {1, 2, 3, 4, 8}
-_fish segnum = 4
-_fish seg = ({7}, {1, 2}, {9}, {1, 4}, {2, 3}, {5}, {4, 8}, {3, 8}, {6})
-_fish candidates = {1, 2, 4}
-start = 4, iteration = 2, data.segnums = [3, 4]
-_fish data.digits = [{1, 2, 4, 6}, {1, 2, 4}]
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({2, 6}, {7}, {5}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2, 6}, {1, 2}, {8}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({3}, {9}, {4}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {1, 4}, {9}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {2, 3}, {2, 3}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {5}, {6}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {4, 8}, {7}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {3, 8}, {1}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {6}, {2, 3}), [{1, 2, 4, 6}, {1, 2, 4}, {2}], [])
-_fish data.digits = [{1, 2, 4, 6}, {1, 2, 4}]
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({2, 6}, {7}, {9}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2, 6}, {1, 2}, {4, 6}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({3}, {9}, {7}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {1, 4}, {6, 8}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {2, 3}, {1}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {5}, {3}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {4, 8}, {4, 8}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {3, 8}, {2}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {6}, {5}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-_fish data.digits = [{1, 2, 4, 6}, {1, 2, 4}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({2, 6}, {7}, {4, 6}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2, 6}, {1, 2}, {5}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({3}, {9}, {1}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {1, 4}, {6, 8}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {2, 3}, {7}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {5}, {2}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {4, 8}, {9}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {3, 8}, {3, 8}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {6}, {3, 4}), [{1, 2, 4, 6}, {1, 2, 4}, {4}], [])
-_fish data.digits = [{1, 2, 4, 6}]
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2}
-start = 5, iteration = 2, data.segnums = [3, 5]
-_fish data.digits = [{1, 2, 4, 6}]
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {4, 6}
-start = 7, iteration = 2, data.segnums = [3, 7]
-_fish data.digits = [{1, 2, 4, 6}, {4, 6}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4, 6}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({2, 6}, {9}, {4, 6}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2, 6}, {4, 6}, {5}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({3}, {7}, {1}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({7}, {6, 8}, {6, 8}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({8}, {1}, {7}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {3}, {2}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {4, 8}, {9}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {2}, {3, 8}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-fish segments: candidates = set()
-fish segments: (({2, 4}, {5}, {3, 4}), [{1, 2, 4, 6}, {4, 6}, {4, 6}], [])
-_fish data.digits = [{1, 2, 4, 6}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {4, 6}
-start = 8, iteration = 2, data.segnums = [3, 8]
-_fish data.digits = []
-_fish digits = {1, 2, 3, 4, 8}
-_fish segnum = 4
-_fish seg = ({7}, {1, 2}, {9}, {1, 4}, {2, 3}, {5}, {4, 8}, {3, 8}, {6})
-_fish candidates = {1, 2, 3, 4, 8}
-start = 4, iteration = 1, data.segnums = [4]
-_fish data.digits = [{1, 2, 3, 4, 8}]
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2, 3}
-start = 5, iteration = 2, data.segnums = [4, 5]
-_fish data.digits = [{1, 2, 3, 4, 8}, {2, 3}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {3}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({7}, {5}, {4, 6}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2}, {8}, {5}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {4}, {1}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {9}, {6, 8}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({2, 3}, {2, 3}, {7}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {6}, {2}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({4, 8}, {7}, {9}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({3, 8}, {1}, {3, 8}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {2, 3}, {3, 4}), [{1, 2, 3, 4, 8}, {2, 3}, {3}], [])
-_fish data.digits = [{1, 2, 3, 4, 8}]
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {8, 4}
-start = 7, iteration = 2, data.segnums = [4, 7]
-_fish data.digits = [{1, 2, 3, 4, 8}, {8, 4}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {8, 4}
-Fish segments
-fish segments: candidates = set()
-fish segments: (({7}, {9}, {4, 6}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 2}, {4, 6}, {5}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({9}, {7}, {1}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({1, 4}, {6, 8}, {6, 8}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({2, 3}, {1}, {7}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({5}, {3}, {2}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({4, 8}, {4, 8}, {9}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({3, 8}, {2}, {3, 8}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-fish segments: candidates = set()
-fish segments: (({6}, {5}, {3, 4}), [{1, 2, 3, 4, 8}, {8, 4}, {8, 4}], [])
-_fish data.digits = [{1, 2, 3, 4, 8}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {8, 3, 4}
-start = 8, iteration = 2, data.segnums = [4, 8]
-_fish data.digits = []
-_fish digits = {2, 3}
-_fish segnum = 5
-_fish seg = ({5}, {8}, {4}, {9}, {2, 3}, {6}, {7}, {1}, {2, 3})
-_fish candidates = {2, 3}
-start = 5, iteration = 1, data.segnums = [5]
-_fish data.digits = [{2, 3}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {3}
-start = 8, iteration = 2, data.segnums = [5, 8]
-_fish data.digits = []
-_fish digits = {8, 4, 6}
-_fish segnum = 7
-_fish seg = ({9}, {4, 6}, {7}, {6, 8}, {1}, {3}, {4, 8}, {2}, {5})
-_fish candidates = {8, 4, 6}
-start = 7, iteration = 1, data.segnums = [7]
-_fish data.digits = [{8, 4, 6}]
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {8, 4, 6}
-start = 8, iteration = 2, data.segnums = [7, 8]
-_fish data.digits = []
-_fish digits = {8, 3, 4, 6}
-_fish segnum = 8
-_fish seg = ({4, 6}, {5}, {1}, {6, 8}, {7}, {2}, {9}, {3, 8}, {3, 4})
-_fish candidates = {8, 3, 4, 6}
-start = 8, iteration = 1, data.segnums = [8]
+INFO:root:hori
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |1 3|1 3| 2 |
+|4  |   |   |  6|  6| 5 |   |   |   |
+|   |7  |  9| 8 | 8 |   |   |   |   |
+|------------------------------------
+|12 |12 |12 | 2 |  3|12 |   |   |   |
+| 56| 56| 5 |4  |   |4  | 5 | 5 |   |
+|   |   |   |7 9|   |  9|7 9|7 9| 8 |
+|------------------------------------
+|12 |123|123| 2 |12 |12 |   |   |   |
+| 5 | 5 | 5 |   |   |   | 5 |  6|4  |
+|   | 8 | 8 |7 9|7  |  9|7 9|   |   |
+|------------------------------------
+|  3|   | 2 | 2 | 2 | 2 | 2 |   |1  |
+|   |4  | 5 |  6|   |  6| 5 | 5 |   |
+|   |   |   |789|7  | 89|78 |7  |   |
+|------------------------------------
+|   |12 |   | 23|   |123| 23|  3|   |
+|   |   |  6|4  | 5 |4  |   |4  |   |
+|7  |   |   | 8 |   | 8 | 8 |   |  9|
+|------------------------------------
+|   |   |12 | 23|12 |123| 23|  3|   |
+|   |   | 5 |4  |4  |4  | 5 |45 |  6|
+| 8 |  9|   |7  |7  |   |7  |7  |   |
+|------------------------------------
+|   |1 3|1 3|  3|   |  3|   | 2 |   |
+|   | 56| 5 | 56|  6|  6|4  |   |   |
+|  9| 8 | 8 | 8 | 8 | 8 |   |   |7  |
+|------------------------------------
+| 2 | 23|   | 23| 2 | 23|1  |1  |  3|
+| 56| 56|   |456|4  |4 6|   |   | 5 |
+|   | 8 |7  | 8 |   | 8 |  9|  9|   |
+|------------------------------------
+| 2 | 23|   |1  |   |   |   |   |  3|
+| 5 | 5 |4  |   |   |   |  6|   | 5 |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = -1, iteration = 0, data.segnums = []
+DEBUG:root:_fish data.digits = []
+DEBUG:root:_fish digits = {8, 1, 3, 6}
+DEBUG:root:_fish segnum = 0
+DEBUG:root:_fish seg = ({4}, {7}, {9}, {6, 8}, {6, 8}, {5}, {1, 3}, {1, 3}, {2})
+DEBUG:root:_fish candidates = {8, 1, 3, 6}
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |1 3|1 3| 2 |
+|4  |   |   |  6|  6| 5 |   |   |   |
+|   |7  |  9| 8 | 8 |   |   |   |   |
+|------------------------------------
+|12 |12 |12 | 2 |  3|12 |   |   |   |
+| 56| 56| 5 |4  |   |4  | 5 | 5 |   |
+|   |   |   |7 9|   |  9|7 9|7 9| 8 |
+|------------------------------------
+|12 |123|123| 2 |12 |12 |   |   |   |
+| 5 | 5 | 5 |   |   |   | 5 |  6|4  |
+|   | 8 | 8 |7 9|7  |  9|7 9|   |   |
+|------------------------------------
+|  3|   | 2 | 2 | 2 | 2 | 2 |   |1  |
+|   |4  | 5 |  6|   |  6| 5 | 5 |   |
+|   |   |   |789|7  | 89|78 |7  |   |
+|------------------------------------
+|   |12 |   | 23|   |123| 23|  3|   |
+|   |   |  6|4  | 5 |4  |   |4  |   |
+|7  |   |   | 8 |   | 8 | 8 |   |  9|
+|------------------------------------
+|   |   |12 | 23|12 |123| 23|  3|   |
+|   |   | 5 |4  |4  |4  | 5 |45 |  6|
+| 8 |  9|   |7  |7  |   |7  |7  |   |
+|------------------------------------
+|   |1 3|1 3|  3|   |  3|   | 2 |   |
+|   | 56| 5 | 56|  6|  6|4  |   |   |
+|  9| 8 | 8 | 8 | 8 | 8 |   |   |7  |
+|------------------------------------
+| 2 | 23|   | 23| 2 | 23|1  |1  |  3|
+| 56| 56|   |456|4  |4 6|   |   | 5 |
+|   | 8 |7  | 8 |   | 8 |  9|  9|   |
+|------------------------------------
+| 2 | 23|   |1  |   |   |   |   |  3|
+| 5 | 5 |4  |   |   |   |  6|   | 5 |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = 0, iteration = 1, data.segnums = [0]
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}]
+DEBUG:root:_fish digits = {4, 6, 7}
+DEBUG:root:_fish segnum = 1
+DEBUG:root:_fish seg = ({1, 2, 5, 6}, {1, 2, 5, 6}, {1, 2, 5}, {2, 4, 7, 9}, {3}, {1, 2, 4, 9}, {5, 7, 9}, {5, 7, 9}, {8})
+DEBUG:root:_fish candidates = {6}
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |1 3|1 3| 2 |
+|4  |   |   |  6|  6| 5 |   |   |   |
+|   |7  |  9| 8 | 8 |   |   |   |   |
+|------------------------------------
+|12 |12 |12 | 2 |  3|12 |   |   |   |
+| 56| 56| 5 |4  |   |4  | 5 | 5 |   |
+|   |   |   |7 9|   |  9|7 9|7 9| 8 |
+|------------------------------------
+|12 |123|123| 2 |12 |12 |   |   |   |
+| 5 | 5 | 5 |   |   |   | 5 |  6|4  |
+|   | 8 | 8 |7 9|7  |  9|7 9|   |   |
+|------------------------------------
+|  3|   | 2 | 2 | 2 | 2 | 2 |   |1  |
+|   |4  | 5 |  6|   |  6| 5 | 5 |   |
+|   |   |   |789|7  | 89|78 |7  |   |
+|------------------------------------
+|   |12 |   | 23|   |123| 23|  3|   |
+|   |   |  6|4  | 5 |4  |   |4  |   |
+|7  |   |   | 8 |   | 8 | 8 |   |  9|
+|------------------------------------
+|   |   |12 | 23|12 |123| 23|  3|   |
+|   |   | 5 |4  |4  |4  | 5 |45 |  6|
+| 8 |  9|   |7  |7  |   |7  |7  |   |
+|------------------------------------
+|   |1 3|1 3|  3|   |  3|   | 2 |   |
+|   | 56| 5 | 56|  6|  6|4  |   |   |
+|  9| 8 | 8 | 8 | 8 | 8 |   |   |7  |
+|------------------------------------
+| 2 | 23|   | 23| 2 | 23|1  |1  |  3|
+| 56| 56|   |456|4  |4 6|   |   | 5 |
+|   | 8 |7  | 8 |   | 8 |  9|  9|   |
+|------------------------------------
+| 2 | 23|   |1  |   |   |   |   |  3|
+| 5 | 5 |4  |   |   |   |  6|   | 5 |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = 1, iteration = 2, data.segnums = [0, 1]
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {6}]
+DEBUG:root:_fish digits = {8, 9, 5, 6}
+DEBUG:root:_fish segnum = 3
+DEBUG:root:_fish seg = ({3}, {4}, {2, 5}, {2, 6, 7, 8, 9}, {2, 7}, {2, 6, 8, 9}, {2, 5, 7, 8}, {5, 7}, {1})
+DEBUG:root:_fish candidates = {6}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], {2, 5})
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {6}, {6}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({6, 8}, {2, 4, 7, 9}, {2, 6, 7, 8, 9})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 1, 3]
+DEBUG:root:candidates = {6}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [{6}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [{6}], {9, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [{6}], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [{6}], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [{6}], set())
+DEBUG:root:popped: ({6, 8}, {2, 4, 7, 9}, {2, 6, 7, 8, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], {9, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {6}, {6}], [], set())
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}]
+DEBUG:root:_fish digits = {8, 9, 3, 7}
+DEBUG:root:_fish segnum = 2
+DEBUG:root:_fish seg = ({1, 2, 5}, {1, 2, 3, 5, 8}, {1, 2, 3, 5, 8}, {2, 7, 9}, {1, 2, 7}, {1, 2, 9}, {5, 7, 9}, {6}, {4})
+DEBUG:root:_fish candidates = {8, 3}
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |1 3|1 3| 2 |
+|4  |   |   |  6|  6| 5 |   |   |   |
+|   |7  |  9| 8 | 8 |   |   |   |   |
+|------------------------------------
+|12 |12 |12 | 2 |  3|12 |   |   |   |
+| 56| 56| 5 |4  |   |4  | 5 | 5 |   |
+|   |   |   |7 9|   |  9|7 9|7 9| 8 |
+|------------------------------------
+|12 |123|123| 2 |12 |12 |   |   |   |
+| 5 | 5 | 5 |   |   |   | 5 |  6|4  |
+|   | 8 | 8 |7 9|7  |  9|7 9|   |   |
+|------------------------------------
+|  3|   | 2 | 2 | 2 | 2 | 2 |   |1  |
+|   |4  | 5 |  6|   |  6| 5 | 5 |   |
+|   |   |   |789|7  | 89|78 |7  |   |
+|------------------------------------
+|   |12 |   | 23|   |123| 23|  3|   |
+|   |   |  6|4  | 5 |4  |   |4  |   |
+|7  |   |   | 8 |   | 8 | 8 |   |  9|
+|------------------------------------
+|   |   |12 | 23|12 |123| 23|  3|   |
+|   |   | 5 |4  |4  |4  | 5 |45 |  6|
+| 8 |  9|   |7  |7  |   |7  |7  |   |
+|------------------------------------
+|   |1 3|1 3|  3|   |  3|   | 2 |   |
+|   | 56| 5 | 56|  6|  6|4  |   |   |
+|  9| 8 | 8 | 8 | 8 | 8 |   |   |7  |
+|------------------------------------
+| 2 | 23|   | 23| 2 | 23|1  |1  |  3|
+| 56| 56|   |456|4  |4 6|   |   | 5 |
+|   | 8 |7  | 8 |   | 8 |  9|  9|   |
+|------------------------------------
+| 2 | 23|   |1  |   |   |   |   |  3|
+| 5 | 5 |4  |   |   |   |  6|   | 5 |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = 2, iteration = 2, data.segnums = [0, 2]
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {8, 3}]
+DEBUG:root:_fish digits = {8, 9, 5, 6}
+DEBUG:root:_fish segnum = 3
+DEBUG:root:_fish seg = ({3}, {4}, {2, 5}, {2, 6, 7, 8, 9}, {2, 7}, {2, 6, 8, 9}, {2, 5, 7, 8}, {5, 7}, {1})
+DEBUG:root:_fish candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {2, 5})
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {8}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({6, 8}, {2, 7, 9}, {2, 6, 7, 8, 9})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 2, 3]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {2, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {9, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:popped: ({6, 8}, {2, 7, 9}, {2, 6, 7, 8, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {2, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {9, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {5, 7})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {8, 3}]
+DEBUG:root:_fish digits = {8, 1, 4}
+DEBUG:root:_fish segnum = 4
+DEBUG:root:_fish seg = ({7}, {1, 2}, {6}, {2, 3, 4, 8}, {5}, {1, 2, 3, 4, 8}, {2, 3, 8}, {3, 4}, {9})
+DEBUG:root:_fish candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {1, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {8}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({6, 8}, {2, 7, 9}, {2, 3, 4, 8})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 2, 4]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {1, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {3})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {3})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:popped: ({6, 8}, {2, 7, 9}, {2, 3, 4, 8})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {1, 2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {3})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {3})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {8, 3}]
+DEBUG:root:_fish digits = {8, 1, 4, 9}
+DEBUG:root:_fish segnum = 7
+DEBUG:root:_fish seg = ({2, 5, 6}, {2, 3, 5, 6, 8}, {7}, {2, 3, 4, 5, 6, 8}, {2, 4}, {2, 3, 4, 6, 8}, {1, 9}, {1, 9}, {3, 5})
+DEBUG:root:_fish candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {2, 5})
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {8}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({7}, {1, 2, 3, 5, 8}, {2, 3, 5, 6, 8})
+DEBUG:root:index = 1
+DEBUG:root:data.segnums = [0, 2, 7]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {8}]
+DEBUG:root:cross_data.digits = [{8}]
+DEBUG:root:squares = ({6, 8}, {2, 7, 9}, {2, 3, 4, 5, 6, 8})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 2, 7]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}, {8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}, {8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}, {8}], {1, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}, {8}], {1})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}, {8}], set())
+DEBUG:root:popped: ({6, 8}, {2, 7, 9}, {2, 3, 4, 5, 6, 8})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {1, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {1})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:popped: ({7}, {1, 2, 3, 5, 8}, {2, 3, 5, 6, 8})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {8}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({6, 8}, {2, 7, 9}, {2, 3, 4, 5, 6, 8})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 2, 7]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {1, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], {1})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [{8}], set())
+DEBUG:root:popped: ({6, 8}, {2, 7, 9}, {2, 3, 4, 5, 6, 8})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {2})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {1, 9})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], {1})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {8}], [], set())
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {8, 3}]
+DEBUG:root:_fish digits = {2, 3, 5}
+DEBUG:root:_fish segnum = 8
+DEBUG:root:_fish seg = ({2, 5}, {2, 3, 5}, {4}, {1}, {9}, {7}, {6}, {8}, {3, 5})
+DEBUG:root:_fish candidates = {3}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], {2, 5})
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 3}, {3}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({7}, {1, 2, 3, 5, 8}, {2, 3, 5})
+DEBUG:root:index = 1
+DEBUG:root:data.segnums = [0, 2, 8]
+DEBUG:root:candidates = {3}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [{3}], set())
+DEBUG:root:popped: ({7}, {1, 2, 3, 5, 8}, {2, 3, 5})
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 3}, {3}], [], set())
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}]
+DEBUG:root:_fish digits = {8, 9, 5, 6}
+DEBUG:root:_fish segnum = 3
+DEBUG:root:_fish seg = ({3}, {4}, {2, 5}, {2, 6, 7, 8, 9}, {2, 7}, {2, 6, 8, 9}, {2, 5, 7, 8}, {5, 7}, {1})
+DEBUG:root:_fish candidates = {8, 6}
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |1 3|1 3| 2 |
+|4  |   |   |  6|  6| 5 |   |   |   |
+|   |7  |  9| 8 | 8 |   |   |   |   |
+|------------------------------------
+|12 |12 |12 | 2 |  3|12 |   |   |   |
+| 56| 56| 5 |4  |   |4  | 5 | 5 |   |
+|   |   |   |7 9|   |  9|7 9|7 9| 8 |
+|------------------------------------
+|12 |123|123| 2 |12 |12 |   |   |   |
+| 5 | 5 | 5 |   |   |   | 5 |  6|4  |
+|   | 8 | 8 |7 9|7  |  9|7 9|   |   |
+|------------------------------------
+|  3|   | 2 | 2 | 2 | 2 | 2 |   |1  |
+|   |4  | 5 |  6|   |  6| 5 | 5 |   |
+|   |   |   |789|7  | 89|78 |7  |   |
+|------------------------------------
+|   |12 |   | 23|   |123| 23|  3|   |
+|   |   |  6|4  | 5 |4  |   |4  |   |
+|7  |   |   | 8 |   | 8 | 8 |   |  9|
+|------------------------------------
+|   |   |12 | 23|12 |123| 23|  3|   |
+|   |   | 5 |4  |4  |4  | 5 |45 |  6|
+| 8 |  9|   |7  |7  |   |7  |7  |   |
+|------------------------------------
+|   |1 3|1 3|  3|   |  3|   | 2 |   |
+|   | 56| 5 | 56|  6|  6|4  |   |   |
+|  9| 8 | 8 | 8 | 8 | 8 |   |   |7  |
+|------------------------------------
+| 2 | 23|   | 23| 2 | 23|1  |1  |  3|
+| 56| 56|   |456|4  |4 6|   |   | 5 |
+|   | 8 |7  | 8 |   | 8 |  9|  9|   |
+|------------------------------------
+| 2 | 23|   |1  |   |   |   |   |  3|
+| 5 | 5 |4  |   |   |   |  6|   | 5 |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = 3, iteration = 2, data.segnums = [0, 3]
+DEBUG:root:_fish data.digits = [{8, 1, 3, 6}, {8, 6}]
+DEBUG:root:_fish digits = {8, 1, 4}
+DEBUG:root:_fish segnum = 4
+DEBUG:root:_fish seg = ({7}, {1, 2}, {6}, {2, 3, 4, 8}, {5}, {1, 2, 3, 4, 8}, {2, 3, 8}, {3, 4}, {9})
+DEBUG:root:_fish candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 6}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 6}, {8}], [], set())
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 6}, {8}], [], set())
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 6}, {8}]
+DEBUG:root:cross_data.digits = []
+DEBUG:root:squares = ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8})
+DEBUG:root:index = 3
+DEBUG:root:data.segnums = [0, 3, 4]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:fish segments: candidates = set()
+DEBUG:root:fish segments: ([{8, 1, 3, 6}, {8, 6}, {8}], [{8}], set())
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 6}, {8}]
+DEBUG:root:cross_data.digits = [{8}]
+DEBUG:root:squares = ({5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8})
+DEBUG:root:index = 5
+DEBUG:root:data.segnums = [0, 3, 4]
+DEBUG:root:candidates = {8}
+INFO:root:Fish segments
+DEBUG:root:data.digits = [{8, 1, 3, 6}, {8, 6}, {8}]
+DEBUG:root:cross_data.digits = [{8}, {8}]
+DEBUG:root:squares = ({1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:index = 6
+DEBUG:root:data.segnums = [0, 3, 4]
+DEBUG:root:candidates = {8}
+INFO:root:remove_fishy_dupes
+DEBUG:root:is bases: True
+DEBUG:root:non_base_cands[0] = {6, 8} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = True
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {2, 4, 7, 9} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {2, 7, 9} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: True
+DEBUG:root:non_base_cands[0] = {2, 6, 7, 8, 9} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = True
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: True
+DEBUG:root:non_base_cands[0] = {2, 3, 4, 8} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = True
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {2, 3, 4, 7} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {3, 5, 6, 8} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+DEBUG:root:non_base_cands = ({3, 5, 6, 8}, {3, 6, 8}, {4})
+DEBUG:root:direction = 'hori'
+DEBUG:root:removing {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {2, 3, 4, 5, 6, 8} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+DEBUG:root:non_base_cands = ({2, 3, 4, 5, 6, 8}, {2, 3, 4, 6, 8}, {1, 9})
+DEBUG:root:direction = 'hori'
+DEBUG:root:removing {8}
+DEBUG:root:is bases: False
+DEBUG:root:non_base_cands[0] = {1} continer[0] = {6, 8}
+DEBUG:root:Basis: ({6, 8}, {2, 6, 7, 8, 9}, {2, 3, 4, 8}, {5}, {2, 6, 8, 9}, {1, 2, 3, 4, 8}, {1, 3}, {2, 5, 7, 8}, {2, 3, 8})
+DEBUG:root:is_bases = False
+DEBUG:root:candidates: {8}
+INFO:root:return segments success!
+INFO:root:hori
+INFO:root:Checking for size 3 fish
+DEBUG:root:------------------------------------
+|   |   |   |   |   |   |  3|1  | 2 |
+|4  |   |   |   |  6| 5 |   |   |   |
+|   |7  |  9| 8 |   |   |   |   |   |
+|------------------------------------
+|1  |   | 2 |   |  3|   |   |   |   |
+|   |  6|   |   |   |4  | 5 |   |   |
+|   |   |   |7  |   |   |   |  9| 8 |
+|------------------------------------
+|   |  3|   |   |1  | 2 |   |   |   |
+| 5 |   |   |   |   |   |   |  6|4  |
+|   |   | 8 |  9|   |   |7  |   |   |
+|------------------------------------
+|  3|   |   |   | 2 |   |   |   |1  |
+|   |4  | 5 |  6|   |   |   |   |   |
+|   |   |   |   |   |  9| 8 |7  |   |
+|------------------------------------
+|   | 2 |   |   |   |1  |   |  3|   |
+|   |   |  6|4  | 5 |   |   |   |   |
+|7  |   |   |   |   |   | 8 |   |  9|
+|------------------------------------
+|   |   |1  |   |   |  3| 2 |   |   |
+|   |   |   |4  |   |   |   | 5 |  6|
+| 8 |  9|   |   |7  |   |   |   |   |
+|------------------------------------
+|   |1  |  3|   |   |   |   | 2 |   |
+|   |   |   | 5 |   |  6|4  |   |   |
+|  9|   |   |   | 8 |   |   |   |7  |
+|------------------------------------
+|   |   |   | 2 |   |  3|1  |   |   |
+|  6|   |   |   |4  |   |   |   | 5 |
+|   | 8 |7  |   |   |   |   |   |   |
+|------------------------------------
+| 2 |   |   |1  |   |   |   |   |  3|
+|   | 5 |4  |   |   |   |  6|   |   |
+|   |   |   |   |  9|7  |   | 8 |   |
+|------------------------------------
+
+DEBUG:root:start = -1, iteration = 0, data.segnums = []
 ------------------------------------
-|1  |   |   |  3|   |   | 2 |   |   |
-|   |   | 5 |   |  6|   |   |4  |   |
-|   |  9|   |   |   |7  |   |   | 8 |
+|   |   |   |   |   |   |  3|1  | 2 |
+|4  |   |   |   |  6| 5 |   |   |   |
+|   |7  |  9| 8 |   |   |   |   |   |
 |------------------------------------
-| 2 |   |   |12 |   |1  |  3|   |   |
-|4  |   |   |4  | 5 |4  |   |  6|   |
-|   |7  | 8 |   |   |   |   |   |  9|
+|1  |   | 2 |   |  3|   |   |   |   |
+|   |  6|   |   |   |4  | 5 |   |   |
+|   |   |   |7  |   |   |   |  9| 8 |
 |------------------------------------
-|  3| 2 |   | 2 |   |   |1  |   |   |
-|   |4  |  6|4  |   |   |   | 5 |   |
-|   |   |   |   |  9| 8 |   |   |7  |
+|   |  3|   |   |1  | 2 |   |   |   |
+| 5 |   |   |   |   |   |   |  6|4  |
+|   |   | 8 |  9|   |   |7  |   |   |
 |------------------------------------
-| 2 |12 |  3|   |   |1  |   |   | 2 |
-|  6|  6|   |   |   |4  | 5 |   |4  |
-|   |   |   |7  | 8 |   |   |  9|   |
+|  3|   |   |   | 2 |   |   |   |1  |
+|   |4  | 5 |  6|   |   |   |   |   |
+|   |   |   |   |   |  9| 8 |7  |   |
 |------------------------------------
-|   |12 |   |1  | 23|   |   |  3|   |
-|   |   |   |4  |   | 5 |4  |   |  6|
-|7  |   |  9|   |   |   | 8 | 8 |   |
+|   | 2 |   |   |   |1  |   |  3|   |
+|   |   |  6|4  | 5 |   |   |   |   |
+|7  |   |   |   |   |   | 8 |   |  9|
 |------------------------------------
-|   |   |   |   | 23|   |   |1  | 23|
-| 5 |   |4  |   |   |  6|   |   |   |
-|   | 8 |   |  9|   |   |7  |   |   |
+|   |   |1  |   |   |  3| 2 |   |   |
+|   |   |   |4  |   |   |   | 5 |  6|
+| 8 |  9|   |   |7  |   |   |   |   |
 |------------------------------------
-|   |  3| 2 |   |   |   |   |   |1  |
-|   |   |   | 5 |4  |   |  6|   |   |
-| 8 |   |   |   |   |  9|   |7  |   |
+|   |1  |  3|   |   |   |   | 2 |   |
+|   |   |   | 5 |   |  6|4  |   |   |
+|  9|   |   |   | 8 |   |   |   |7  |
 |------------------------------------
-|   |   |   |   |1  |  3|   | 2 |   |
-|   |4 6|   |  6|   |   |4  |   | 5 |
-|  9|   |7  | 8 |   |   | 8 |   |   |
+|   |   |   | 2 |   |  3|1  |   |   |
+|  6|   |   |   |4  |   |   |   | 5 |
+|   | 8 |7  |   |   |   |   |   |   |
 |------------------------------------
-|   |   |1  |   |   | 2 |   |  3|  3|
-|4 6| 5 |   |  6|   |   |   |   |4  |
-|   |   |   | 8 |7  |   |  9| 8 |   |
+| 2 |   |   |1  |   |   |   |   |  3|
+|   | 5 |4  |   |   |   |  6|   |   |
+|   |   |   |   |  9|7  |   | 8 |   |
 |------------------------------------
 
-195367248
-078050369
-306098157
-003780590
-709005006
-584906710
-832549671
-907013025
-051072900
+479865312
+162734598
+538912764
+345629871
+726451839
+891473256
+913586427
+6872431X5
+254197683
 
-unsolved
+ERROR

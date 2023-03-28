@@ -206,9 +206,9 @@ class Board(object):
 	def swordfish(self):
 		log.info("hori")
 		hori = self._fish("hori", 3)
-		log.info("vert")
-		vert = self._fish("vert", 3)
-		return hori or vert
+		#log.info("vert")
+		#vert = self._fish("vert", 3)
+		return hori #or vert
 
 	def _fish(
 		self,
@@ -272,11 +272,31 @@ class Board(object):
 		digit_counts = {}
 		for d in range(1, self.size + 1):
 			for square in squares:
+				# should do this with filter and len
 				if d in square:
 					digit_counts.setdefault(d, 0)
 					digit_counts[d] += 1
 		digits = {d for d, c in digit_counts.items() if c <= n and c > 1}
 		return digits
+
+	def cand_in_wrong_cross_seg(
+		self,
+		direction: Literal["hori", "vert"],
+		digits: set[int],
+		nums1: list[int],
+		nums2: list[int]) -> bool:
+		""" """
+		board = self.board if direction == "hori" else tuple(zip(*self.board))
+		for d in digits:
+			for index in nums1:
+				total_count = sum(1 for segment in board[index] if d in segment)
+				sub_count = len(tuple(filter(lambda st: d in st, (self.board[seg][i] for i in nums2))))
+				log.debug(f"{total_count = } {sub_count = }")
+				if total_count != sub_count:
+					return False
+		return True
+
+
 
 	def fish_segments(
 		self,
@@ -301,12 +321,20 @@ class Board(object):
 
 		start = cross_data.segnums[iteration-1] if len(cross_data.segnums) > 0 else -1
 		for index, squares in enumerate(tuple(zip(*data.segments))[start+1:]):
-			# need to use digits_with_n_or_less_places or something like it on cross_data.digits
 			digits = self.digits_with_n_or_less_places(squares, size)
+
+			# need to check all occurances of the digit are acutally in the colnms
 
 			if not (candidates := reduce(and_, chain(cross_data.digits, data.digits), digits)):
 				log.debug(f"fish segments: {candidates = }")
 				log.debug(f"fish segments: {data.digits, cross_data.digits, digits}")
+				continue
+
+			if self.cand_in_wrong_cross_seg(
+				direction,
+				candidates,
+				data.segnums,
+				cross_data.segnums + [index]):
 				continue
 
 			index += start + 1
@@ -349,7 +377,7 @@ class Board(object):
 
 			# not working
 			is_bases = any(in_identity(cand, chain(*cross_data.segments)) for cand in non_base_cands)
-			log.debug("is bases: ", is_bases)
+			log.debug(f"is bases: {is_bases}")
 			log.debug(f"{non_base_cands[0] = } continer[0] = {tuple(chain(*cross_data.segments))[0]}")
 			log.debug(f"Basis: {tuple(chain(*cross_data.segments))}")
 			log.debug(f"{is_bases = }")
@@ -364,9 +392,12 @@ class Board(object):
 				log.debug(f"{non_base_cands = }")
 				log.debug(f"{direction = }")
 
+				print(f"Before {cross_data.segnums}:\n {self}")
+
 				log.debug(f"removing {cross_data.digits[-1]}")
 				for not_base in non_base_cands:
 					not_base -= cross_data.digits[-1]
+				print("After:\n", self)
 		#if modified:
 			#log.debug(str(self))
 			#log.info(f"{direction} x-wing!!!")
@@ -429,7 +460,7 @@ class Board(object):
 		while modified:
 			modified = self.basic_pass()
 			if not modified:
-				modified = modified or self.x_wing()
+				#modified = modified or self.x_wing()
 				modified = modified or self.swordfish()
 
 				modified = modified or self.check_strategy(self.triple)
