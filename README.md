@@ -1,2 +1,2 @@
 # Sudoku_Solver
- Solve Sudoku using various strategies
+ Solve Sudoku using various logical strategies and not bifrication.
