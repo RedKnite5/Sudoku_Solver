@@ -101,7 +101,7 @@ class Board(object):
 		self.size = len(data)
 		digits = {i for i in range(1, self.size + 1)}
 		
-		self.board = [
+		self.board: list[list[set[int]]] = [
 			[{int(data[j][i])} if int(data[j][i]) else digits.copy()
 			for i
 			in range(self.size)] for j in range(self.size)
@@ -275,13 +275,15 @@ class Board(object):
 		
 		log.info("checking for x-wings")
 		
-		segments1 = self.board if direction == "hori" else (self.board[:][i] for i in range(9))
+		#segments1 = self.board if direction == "hori" else [self.board[i][:] for i in range(9)]
+		segments1 = self.board if direction == "hori" else [[self.board[i][j] for i in range(9)] for j in range(9)]
+
 		for segnum1, seg1 in enumerate(segments1):
 		
 			digits1 = find_digits_with_n_places(seg1, 2)
 			
-			segments2 = self.board[segnum1:] if direction == "hori" else (self.board[:][i] for i in range(segnum1, 9))  # ?
-			for segnum2, seg2 in enumerate(segments2):
+			segments2 = self.board[segnum1:] if direction == "hori" else [[self.board[i][j] for i in range(9)] for j in range(segnum1+1,9)]  # ?
+			for segnum2, seg2 in enumerate(segments2, start=segnum1+1):
 				if seg2 is seg1:
 					continue
 				
@@ -296,6 +298,7 @@ class Board(object):
 				log.debug(f"{segtype} {segnum1} is {seg1}")
 				log.debug(f"{segtype} {segnum2} is {seg2}")
 				log.debug(f"the common digit or digits are {common}")
+				log.debug(str(self))
 				
 				for index, (square1a, square1b) in enumerate(zip(seg1, seg2)):
 					if not (candidates := square1a & square1b & common):
@@ -375,11 +378,14 @@ class Board(object):
 		modified = self.basic_pass()
 		while modified:
 			modified = self.basic_pass()
+			if self.broken():
+				print("Broken!")
 			if not modified:
 				modified = modified or self.x_wing("vert")
 				modified = modified or self.x_wing("hori")
 				modified = modified or self.check_strategy(self.triple)
 				modified = modified or self.check_strategy(self.hidden_pair)
+
 
 	def basic_pass(self) -> bool:
 
@@ -414,11 +420,16 @@ class Board(object):
 					s += "0"
 			s += "\n"
 		return s
+	
+	def broken(self) -> bool:
+		#print(list(square for row in self.board for square in row))
+		return not all(square for row in self.board for square in row)
 
 
 
 def main():
 	board = Board(evil[1:-1])
+
 	board.solve()
 	print(board)
 	rep = board.to_string()
